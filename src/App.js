@@ -1,40 +1,21 @@
 import "./App.css";
-import React, { Component } from "react";
-import { Remarkable } from "remarkable";
-class MarkdownEditor extends Component {
-	constructor(props) {
-		super(props);
-		this.md = new Remarkable();
-		this.handleChange = this.handleChange.bind(this);
-		this.state = { value: "Hello, **world**!" };
-	}
+import React, { useState } from "react";
+import Markdown from "react-remarkable";
+const MarkdownEditor = () => {
+	const [markdownText, setMarkdownText] = useState("");
 
-	handleChange(e) {
-		this.setState({ value: e.target.value });
-	}
-
-	getRawMarkup() {
-		return { __html: this.md.render(this.state.value) };
-	}
-
-	render() {
-		return (
-			<div className="MarkdownEditor">
-				<h3>Input</h3>
-				<label htmlFor="markdown-content">Enter some markdown</label>
-				<textarea
-					id="markdown-content"
-					onChange={this.handleChange}
-					defaultValue={this.state.value}
-				/>
-				<h3>Output</h3>
-				<div
-					className="content"
-					dangerouslySetInnerHTML={this.getRawMarkup()}
-				/>
-			</div>
-		);
-	}
-}
+	return (
+		<div className="MarkdownEditor">
+			<h3>Input</h3>
+			<label>Enter some markdown</label>
+			<textarea
+				onChange={(e) => setMarkdownText(e.target.value)}
+				defaultValue={markdownText}
+			/>
+			<h3>Output</h3>
+			<Markdown>{`${markdownText}`}</Markdown>
+		</div>
+	);
+};
 
 export default MarkdownEditor;
