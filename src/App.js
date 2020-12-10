@@ -6,15 +6,16 @@ const MarkdownEditor = () => {
 
 	return (
 		<div className="MarkdownEditor">
-			<h3>Input</h3>
-			<label>Enter some markdown</label>
-			<textarea
-				onChange={(e) => setMarkdownText(e.target.value)}
-				defaultValue={markdownText}
-			/>
-			<h3>Output</h3>
-			<Markdown>{`${markdownText}`}</Markdown>
-		</div>
+		<h3>Input</h3>
+		<h3>Input</h3>
+		<label>Enter some markdown</label>
+		<textarea
+			onChange={e => setMarkdownText(e.target.value)}
+			defaultValue={markdownText}
+		/>
+		<h3>Output</h3>
+		<Markdown>{`${markdownText}`}</Markdown>
+	</div>
 	);
 };
 
